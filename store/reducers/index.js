@@ -1,8 +1,13 @@
 import { combineReducers } from "redux";
-import flight from "./flightReducer";
-import booking from "./bookingReducer";
-import user from "./authReducer";
 
-const rootReducer = combineReducers({ flight, booking, user });
+import flightReducer from "./flightReducer";
+import bookingReducer from "./bookingReducer";
+import authReducer from "./authReducer";
+
+const rootReducer = combineReducers({
+  flightReducer,
+  bookingReducer,
+  authReducer,
+});
 
 export default rootReducer;

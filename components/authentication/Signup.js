@@ -30,31 +30,31 @@ const Signup = ({ navigation }) => {
       <AuthTitle>Sign up</AuthTitle>
       <AuthTextInput
         placeholder="Username"
-        placeholderTextColor="#ff85a2"
+        placeholderTextColor="black"
         autoCapitalize="none"
         onChangeText={(username) => setUser({ ...user, username })}
       />
       <AuthTextInput
         placeholder="Password"
-        placeholderTextColor="#ff85a2"
+        placeholderTextColor="black"
         secureTextEntry={true}
         onChangeText={(password) => setUser({ ...user, password })}
       />
       <AuthTextInput
         placeholder="Email"
-        placeholderTextColor="#ff85a2"
+        placeholderTextColor="black"
         autoCapitalize="none"
         onChangeText={(email) => setUser({ ...user, email })}
       />
       <AuthTextInput
         placeholder="First Name"
-        placeholderTextColor="#ff85a2"
+        placeholderTextColor="black"
         autoCapitalize="none"
         onChangeText={(firstName) => setUser({ ...user, firstName })}
       />
       <AuthTextInput
         placeholder="Last Name"
-        placeholderTextColor="#ff85a2"
+        placeholderTextColor="black"
         autoCapitalize="none"
         onChangeText={(lastName) => setUser({ ...user, lastName })}
       />

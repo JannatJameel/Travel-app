@@ -28,13 +28,13 @@ const Signin = ({ navigation }) => {
       <AuthTitle>Sign in</AuthTitle>
       <AuthTextInput
         placeholder="Username"
-        placeholderTextColor="#ff85a2"
+        placeholderTextColor="black"
         autoCapitalize="none"
         onChangeText={(username) => setUser({ ...user, username: username })}
       />
       <AuthTextInput
         placeholder="Password"
-        placeholderTextColor="#ff85a2"
+        placeholderTextColor="black"
         secureTextEntry={true}
         onChangeText={(password) => setUser({ ...user, password })}
       />

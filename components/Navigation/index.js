@@ -6,13 +6,20 @@ import { NavigationContainer } from "@react-navigation/native";
 import Signin from "../authentication/Signin";
 import Signup from "../authentication/Signup";
 import FlightSearch from "../Flight/FlightSearch";
+import FlightCard from "../FlightList/FlightCard";
+import DepartureFlights from "../FlightList/DepartureFlights";
+import ReturnFlights from "../FlightList/ReturnFlights";
+import Home from "../Home";
 
 const RootNavigator = () => {
   const { Navigator, Screen } = createStackNavigator();
   return (
-    <NavigationContainer initialRouteName="FlightSearch">
+    <NavigationContainer initialRouteName="Home">
       <Navigator>
+        <Screen name="Home" component={Home} options={{ headerShown: false }} />
         <Screen name="FlightSearch" component={FlightSearch} />
+        <Screen name="ReturnFlights" component={ReturnFlights} />
+        <Screen name="DepartureFlights" component={DepartureFlights} />
         <Screen name="Signin" component={Signin} />
         <Screen name="Signup" component={Signup} />
       </Navigator>

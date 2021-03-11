@@ -50,7 +50,7 @@ const FlightSearch = ({ navigation }) => {
   const handleSubmit = () => {
     dispatch(searchDepartures(flight));
     dispatch(searchReturns(flight));
-    // history.push("flights");
+    navigation.push("DepartureFlights");
   };
 
   return (

@@ -18,7 +18,7 @@ export const signin = (userData, navigation) => {
     try {
       const res = await instance.post("/signin", userData);
       dispatch(setUser(res.data.token));
-      // navigation.goBack();
+      navigation.goBack();
       console.log("Success!");
     } catch (error) {
       console.log(error);
@@ -31,10 +31,33 @@ export const signup = (newUser, navigation) => {
     try {
       const res = await instance.post("/signup", newUser);
       dispatch(setUser(res.data.token));
-      // navigation.replace("CartList");
+      navigation.replace("Home");
       console.log(newUser);
     } catch (error) {
       console.log(error);
     }
   };
+};
+
+export const signout = () => {
+  AsyncStorage.removeItem("myToken");
+  delete instance.defaults.headers.common.Authorization;
+  return {
+    type: types.SET_USER,
+    payload: null,
+  };
+};
+
+export const checkForToken = () => async (dispatch) => {
+  const token = await AsyncStorage.getItem("myToken");
+  if (token) {
+    const user = decode(token);
+    const currentTime = Date.now();
+    if (currentTime <= user.exp) {
+      dispatch(setUser(token));
+    } else {
+      AsyncStorage.removeItem("myToken");
+      dispatch(signout());
+    }
+  }
 };

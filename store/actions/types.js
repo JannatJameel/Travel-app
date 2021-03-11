@@ -1,13 +1,13 @@
-// Product Types
-export const FETCH_PRODUCTS = "FETCH_PRODUCTS";
+export const FETCH_AIRPORTS = "FETCH_AIRPORTS";
+export const FETCH_DEPARTURES = "FETCH_DEPARTURES";
+export const FETCH_RETURNS = "FETCH_RETURNS";
+export const CREATE_FLIGHT = "CREATE_FLIGHT";
+export const UPDATE_FLIGHT = "UPDATE_FLIGHT";
 
-// Shop Types
-export const FETCH_SHOPS = "FETCH_SHOPS";
+export const ADD_FLIGHT = "ADD_FLIGHT";
+export const FETCH_BOOKINGS = "FETCH_BOOKINGS";
+export const CHECKOUT = "CHECKOUT";
 
 // Auth Types
 export const SET_USER = "SET_USER";
-
-// Cart Types
-export const ADD_TO_CART = "ADD_TO_CART";
-export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
-export const CHECKOUT = "CHECKOUT";
+export const UPDATE_USER = "UPDATE_USER";

@@ -56,3 +56,11 @@ export const AuthButtonText = styled.Text`
   font-weight: bold;
   font-size: 18px;
 `;
+export const TripButton = styled.Button`
+marginLeft: 15,
+marginRight: 15,
+background: #3897f1,
+borderRadius: 5,
+height: 45,
+marginTop: 10,
+`;

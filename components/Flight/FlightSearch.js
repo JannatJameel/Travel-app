@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { searchDepartures } from "../../store/actions/flightActions";
 import { searchReturns } from "../../store/actions/flightActions";
+// import AsyncStorage from "@react-native-async-storage/async-storage";
 
 //import DatePicker from the package we installed
 import DatePicker from "react-native-datepicker";
@@ -47,9 +48,11 @@ const FlightSearch = ({ navigation }) => {
     (airport) => airport !== flight.departureAirport
   );
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     dispatch(searchDepartures(flight));
-    dispatch(searchReturns(flight));
+    if (roundtrip) dispatch(searchReturns(flight));
+    // await AsyncStorage.setItem("passengers", flight.passengers);
+    // await AsyncStorage.setItem("class", flight.flightClass);
     navigation.push("DepartureFlights");
   };
 
@@ -71,11 +74,8 @@ const FlightSearch = ({ navigation }) => {
             <Picker
               mode="dropdown"
               id="departureAirport"
-              // iosIcon={<Icon name="arrow-down" />}
               style={{ width: 400 }}
               placeholder="Departure Airport"
-              // placeholderStyle={{ color: "#bfc6ea" }}
-              // placeholderIconColor="#007aff"
               selectedValue={flight.departureAirport}
               onValueChange={(departureAirport) =>
                 setFlight({ ...flight, departureAirport })
@@ -92,11 +92,8 @@ const FlightSearch = ({ navigation }) => {
             <Picker
               id="arrivalAirports"
               mode="dropdown"
-              // iosIcon={<Icon name="arrow-down" />}
               style={{ width: 400 }}
               placeholder="Arrial Airport"
-              // placeholderStyle={{ color: "#bfc6ea" }}
-              // placeholderIconColor="#007aff"
               selectedValue={flight.arrivalAirport}
               onValueChange={(arrivalAirport) =>
                 setFlight({ ...flight, arrivalAirport })
@@ -113,11 +110,8 @@ const FlightSearch = ({ navigation }) => {
           <Item picker>
             <Picker
               mode="dropdown"
-              // iosIcon={<Icon name="arrow-down" />}
               style={{ width: 400 }}
               placeholder="Flight Class"
-              // placeholderStyle={{ color: "#bfc6ea" }}
-              // placeholderIconColor="#007aff"
               selectedValue={flight.flightClass}
               onValueChange={(flightClass) =>
                 setFlight({ ...flight, flightClass })
@@ -206,11 +200,8 @@ const FlightSearch = ({ navigation }) => {
       </Content>
 
       <AuthButton onPress={handleSubmit}>
-        <AuthButtonText>Submit</AuthButtonText>
+        <AuthButtonText>Search</AuthButtonText>
       </AuthButton>
-      {/* <AuthOther onPress={() => navigation.navigate("Signin")}>
-        Already have an account? Sign in!
-      </AuthOther> */}
     </AuthContainer>
   );
 };

@@ -2,8 +2,9 @@ import React from "react";
 import FlightCard from "./FlightCard";
 import { useSelector } from "react-redux";
 
-import { Body, Container, Title } from "native-base";
-import { View, Text } from "react-native";
+//styling
+import { Container, Title } from "native-base";
+import { Text } from "react-native";
 
 const DepartureFlights = ({ navigation }) => {
   const departureFlights = useSelector(
@@ -11,8 +12,14 @@ const DepartureFlights = ({ navigation }) => {
   );
   return (
     <Container>
+      <Text>Departure Flights</Text>
       {departureFlights.map((flight) => (
-        <FlightCard flight={flight} key={flight.id} navigation={navigation} />
+        <FlightCard
+          flight={flight}
+          key={flight.id}
+          isReturnFlight={false}
+          navigation={navigation}
+        />
       ))}
     </Container>
   );

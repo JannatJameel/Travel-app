@@ -2,8 +2,12 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { searchDepartures } from "../../store/actions/flightActions";
-import { searchReturns } from "../../store/actions/flightActions";
-// import AsyncStorage from "@react-native-async-storage/async-storage";
+import {
+  searchReturns,
+  setPassengers,
+  setClass,
+} from "../../store/actions/flightActions";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 //import DatePicker from the package we installed
 import DatePicker from "react-native-datepicker";
@@ -28,15 +32,15 @@ const FlightSearch = ({ navigation }) => {
           arrivalAirport: "",
           departureDate: "",
           returnDate: "",
-          flightClass: "",
           passengers: "",
+          flightClass: "",
         }
       : {
           departureAirport: "",
           arrivalAirport: "",
           departureDate: "",
-          flightClass: "",
           passengers: "",
+          flightClass: "",
         }
   );
 
@@ -49,11 +53,15 @@ const FlightSearch = ({ navigation }) => {
   );
 
   const handleSubmit = async () => {
-    dispatch(searchDepartures(flight));
+    dispatch(searchDepartures(flight, navigation));
+    dispatch(setClass());
+    dispatch(setPassengers());
     if (roundtrip) dispatch(searchReturns(flight));
-    // await AsyncStorage.setItem("passengers", flight.passengers);
-    // await AsyncStorage.setItem("class", flight.flightClass);
-    navigation.push("DepartureFlights");
+    try {
+      navigation.push("DepartureFlights");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

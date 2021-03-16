@@ -16,11 +16,11 @@ import Home from "../Home";
 const RootNavigator = () => {
   const { Navigator, Screen } = createStackNavigator();
   return (
-    <NavigationContainer initialRouteName="Checkout">
+    <NavigationContainer initialRouteName="Home">
       <Navigator>
+        <Screen name="Home" component={Home} options={{ headerShown: false }} />
         <Screen name="Checkout" component={Checkout} />
         <Screen name="TravellersForm" component={TravellersForm} />
-        <Screen name="Home" component={Home} options={{ headerShown: false }} />
         <Screen name="FlightReview" component={FlightReview} />
         <Screen name="FlightSearch" component={FlightSearch} />
         <Screen name="ReturnFlights" component={ReturnFlights} />

@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { checkout } from "../../store/actions/bookingActions";
+import CheckoutCard from "./CheckoutCard";
 //Styling
 import {
   Container,
@@ -15,56 +16,64 @@ import {
 import { AuthButton, AuthButtonText } from "./styles";
 import { Alert } from "react-native";
 
-const Booking = () => {
+const Checkout = ({ flight, navigation }) => {
   const dispatch = useDispatch();
+  const flightClass = useSelector((state) => state.flightReducer.flightClass);
+  const passengers = useSelector((state) => state.flightReducer.passengers);
 
   const bookings = useSelector((state) => state.bookingReducer.bookings);
 
-  const handleCheckout = () => {
-    const cart = [
-      {
-        flightId: bookings[0].id,
-        passengers: localStorage.getItem("passengers"),
-      },
-      {
-        flightId: bookings[1].id,
-        passengers: localStorage.getItem("passengers"),
-      },
-    ];
-    dispatch(checkout(cart));
-  };
+  console.log("FLIGHT!!!!!!!!", flight);
+  // console.log("PAssenger", passengers);
+  // console.log(flight.priceBusiness);
+  // console.log(flight.priceEconomy);
 
   return (
     <Container>
-      <Content>
-        <Text>Trip Summary</Text>
-        {/* Total */}
-        <Card>
-          <CardItem>
-            <Left>
-              <Text>
-                Traveller 1 {"\n"}
-                BAH - KSA{"\n"}
-                KSA - BAH
-              </Text>
-            </Left>
-            <Right>
-              <Text>
-                {"\n"}
-                BD 300 {"\n"}
-                BD 300
-              </Text>
-            </Right>
-          </CardItem>
-        </Card>
-        <AuthButton
-          onPress={() => Alert.alert("Thank you for booking with us!")}
-        >
-          <AuthButtonText>Checkout</AuthButtonText>
-        </AuthButton>
-      </Content>
+      {bookings.map((flight) => (
+        <CheckoutCard flight={flight} key={flight.id} navigation={navigation} />
+      ))}
     </Container>
   );
 };
 
-export default Booking;
+export default Checkout;
+
+// <Content>
+
+// <Text>Trip Summary</Text>
+// {/* <Text>
+//   {flightClass === "economy"
+//     ? flight.priceEconomy
+//     : flight.priceBusiness}
+// </Text> */}
+// {/* Total */}
+// <Card>
+//   <CardItem>
+//     <Left>
+//       <Text>
+//         Traveller 1 {"\n"}
+//         BAH - KSA{"\n"}
+//         KSA - BAH
+//       </Text>
+//     </Left>
+//     <Right>
+//       <Text>
+//         {/* {"\n"}
+//         {flightClass === "economy"
+//           ? flight.priceEconomy
+//           : flight.priceBusiness}
+//         {"\n"}
+//         {flightClass === "economy"
+//           ? flight.priceEconomy
+//           : flight.priceBusiness} */}
+//       </Text>
+//     </Right>
+//   </CardItem>
+// </Card>
+// <AuthButton
+//   onPress={() => Alert.alert("Thank you for booking with us!")}
+// >
+//   <AuthButtonText>Checkout</AuthButtonText>
+// </AuthButton>
+// </Content>

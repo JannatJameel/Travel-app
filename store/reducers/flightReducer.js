@@ -4,6 +4,8 @@ const initialState = {
   departureFlights: [],
   returnFlights: [],
   airports: [],
+  passengers: "",
+  flightClass: "",
   loading: true,
 };
 
@@ -13,7 +15,6 @@ const flightReducer = (state = initialState, action) => {
       return {
         ...state,
         departureFlights: action.payload,
-        loading: false,
       };
     case types.FETCH_RETURNS:
       return {
@@ -24,6 +25,16 @@ const flightReducer = (state = initialState, action) => {
       return {
         ...state,
         airports: action.payload,
+      };
+    case types.SET_PASSENGER:
+      return {
+        ...state,
+        passengers: action.payload,
+      };
+    case types.SET_CLASS:
+      return {
+        ...state,
+        flightClass: action.payload,
       };
     default:
       return state;

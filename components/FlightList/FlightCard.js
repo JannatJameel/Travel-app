@@ -1,21 +1,17 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addFlight } from "../../store/actions/bookingActions";
+
 //Styling
-import {
-  Container,
-  Content,
-  Card,
-  CardItem,
-  Body,
-  Text,
-  Right,
-  Left,
-} from "native-base";
+import { Card, CardItem, Body, Text, Right, Left } from "native-base";
 import { Button } from "react-native";
 
 const FlightCard = ({ flight, navigation, isReturnFlight }) => {
   const dispatch = useDispatch();
+
+  const flightClass = useSelector((state) => state.flightReducer.flightClass);
+  // console.log("PASSENGERS", passengers);
+  // console.log("CLASSS", flightClass);
 
   console.log("FlightCard page", flight);
   const handleAddFlight = () => {
@@ -42,7 +38,11 @@ const FlightCard = ({ flight, navigation, isReturnFlight }) => {
         </Body>
         <Right>
           <Text>
-            BD {flight.price} {"\n"}
+            BD{" "}
+            {flightClass === "economy"
+              ? flight.priceEconomy
+              : flight.priceBusiness}
+            {"\n"}
             Per Traveller
           </Text>
         </Right>

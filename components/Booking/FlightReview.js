@@ -13,7 +13,7 @@ const FlightReview = ({ navigation }) => {
     Alert.alert("Alert Title", "My Alert Msg", [
       {
         text: "Guest",
-        onPress: () => console.log("Guest..."),
+        onPress: () => navigation.navigate("TravellersForm"),
       },
       { text: "Signin", onPress: () => navigation.navigate("Signin") },
     ]);

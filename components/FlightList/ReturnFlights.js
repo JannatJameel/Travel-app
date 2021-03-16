@@ -9,12 +9,37 @@ const ReturnFlights = ({ navigation }) => {
   const returnFlights = useSelector(
     (state) => state.flightReducer.returnFlights
   );
-  console.log("AY SHEE", returnFlights);
+  const bookings = useSelector((state) => state.bookingReducer.bookings);
+
+  if (returnFlights.length === 0) navigation.replace("FlightReview");
+  const minTime =
+    new Date(
+      [bookings[0].arrivalDate, bookings[0].arrivalTime].join("T")
+    ).valueOf() + 7200000;
+
+  console.log(
+    "TIIIMEEEE",
+    new Date([bookings[0].arrivalDate, bookings[0].arrivalTime].join("T"))
+  );
+
+  const availableFlights = returnFlights.filter(
+    (flight) =>
+      new Date(
+        [flight.departureDate, flight.departureTime].join("T")
+      ).valueOf() >= minTime
+  );
+  console.log("AVAILABLE", availableFlights);
+
   return (
     <Container>
       <Title>Return Flight</Title>
-      {returnFlights.map((flight) => (
-        <FlightCard flight={flight} key={flight.id} navigation={navigation} />
+      {availableFlights.map((flight) => (
+        <FlightCard
+          flight={flight}
+          key={flight.id}
+          isReturnFlight={true}
+          navigation={navigation}
+        />
       ))}
     </Container>
   );

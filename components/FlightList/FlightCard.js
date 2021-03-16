@@ -1,51 +1,53 @@
 import React from "react";
-import {
-  Container,
-  Content,
-  Card,
-  CardItem,
-  Body,
-  Text,
-  Right,
-  Left,
-  TouchableOpacity,
-} from "native-base";
-import { Button } from "react-native";
-const FlightCard = ({ flight, navigation }) => {
-  console.log("FlightCard page", flight);
+import { useDispatch, useSelector } from "react-redux";
+import { addFlight } from "../../store/actions/bookingActions";
 
-  //   const handelLink = () => {
-  //     navigation.push("FlightSearch");
-  //   };
+//Styling
+import { Card, CardItem, Body, Text, Right, Left } from "native-base";
+import { Button } from "react-native";
+
+const FlightCard = ({ flight, navigation, isReturnFlight }) => {
+  const dispatch = useDispatch();
+
+  const flightClass = useSelector((state) => state.flightReducer.flightClass);
+  // console.log("PASSENGERS", passengers);
+  // console.log("CLASSS", flightClass);
+
+  console.log("FlightCard page", flight);
+  const handleAddFlight = () => {
+    const newFlight = { flightId: flight.id };
+    dispatch(addFlight(flight));
+    isReturnFlight
+      ? navigation.push("FlightReview")
+      : navigation.push("ReturnFlights");
+  };
+
   return (
-    <Container>
-      <Content>
-        <Card>
-          <CardItem>
-            <Left>
-              <Text>
-                {flight.departureTime} - {flight.arrivalTime} {"\n"}
-                {flight.departureAirport.location} -{" "}
-                {flight.arrivalAirport.location} {"\n"}
-                {flight.airline.name}
-              </Text>
-            </Left>
-            <Body>
-              <Button
-                onPress={() => navigation.navigate("ReturnFlights")}
-                title="CLICKKK"
-              />
-            </Body>
-            <Right>
-              <Text>
-                BD {flight.price} {"\n"}
-                Per Traveller
-              </Text>
-            </Right>
-          </CardItem>
-        </Card>
-      </Content>
-    </Container>
+    <Card>
+      <CardItem>
+        <Left>
+          <Text>
+            {flight.departureTime} - {flight.arrivalTime} {"\n"}
+            {flight.departureAirport.location} -{" "}
+            {flight.arrivalAirport.location} {"\n"}
+            {flight.airline.name}
+          </Text>
+        </Left>
+        <Body>
+          <Button onPress={handleAddFlight} title="CLICKKK" />
+        </Body>
+        <Right>
+          <Text>
+            BD{" "}
+            {flightClass === "economy"
+              ? flight.priceEconomy
+              : flight.priceBusiness}
+            {"\n"}
+            Per Traveller
+          </Text>
+        </Right>
+      </CardItem>
+    </Card>
   );
 };
 

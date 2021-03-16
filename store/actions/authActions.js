@@ -4,12 +4,17 @@ import * as types from "./types";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const setUser = (token) => {
-  // Add async dispatch and await for AsyncStorage
-  AsyncStorage.setItem("myToken", token);
-  instance.defaults.headers.common.Authorization = `Bearer ${token}`;
-  return {
-    type: types.SET_USER,
-    payload: decode(token),
+  return async (dispatch) => {
+    try {
+      await AsyncStorage.setItem("myToken", token);
+      instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+      dispatch({
+        type: types.SET_USER,
+        payload: decode(token),
+      });
+    } catch (error) {
+      console.log("error:", error);
+    }
   };
 };
 

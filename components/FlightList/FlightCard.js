@@ -10,10 +10,7 @@ const FlightCard = ({ flight, navigation, isReturnFlight }) => {
   const dispatch = useDispatch();
 
   const flightClass = useSelector((state) => state.flightReducer.flightClass);
-  // console.log("PASSENGERS", passengers);
-  // console.log("CLASSS", flightClass);
 
-  console.log("FlightCard page", flight);
   const handleAddFlight = () => {
     const newFlight = { flightId: flight.id };
     dispatch(addFlight(flight));

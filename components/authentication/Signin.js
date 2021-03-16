@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signin } from "../../store/actions/authActions";
 
 // Styling
@@ -14,6 +14,8 @@ import {
 
 const Signin = ({ navigation }) => {
   const dispatch = useDispatch();
+  const bookings = useSelector((state) => state.bookingReducer.bookings);
+  // const passenger = useSelector((state) => state.flightReducer.passengers);
   const [user, setUser] = useState({
     username: "",
     password: "",
@@ -21,6 +23,9 @@ const Signin = ({ navigation }) => {
 
   const handleSubmit = () => {
     dispatch(signin(user, navigation));
+    bookings.length > 0
+      ? navigation.replace("TravellersForm")
+      : navigation.replace("Home");
   };
 
   return (

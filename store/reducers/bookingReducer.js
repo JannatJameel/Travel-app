@@ -2,6 +2,7 @@ import * as types from "../actions/types";
 
 const initialState = {
   bookings: [],
+  passengers: [],
 };
 
 const bookingReducer = (state = initialState, action) => {
@@ -16,6 +17,7 @@ const bookingReducer = (state = initialState, action) => {
       return {
         ...state,
         bookings: [],
+        passengers: [],
       };
     case types.SET_PASSENGERS:
       return {

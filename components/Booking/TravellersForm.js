@@ -15,7 +15,6 @@ const TravellersForm = ({ navigation }) => {
   }
 
   const [passengers, setPassengers] = useState(passenger);
-  console.log("PASSSS", passengers);
   const count = [];
   while (count.length < passengersNum) count.push(`${count.length + 1}`);
 
@@ -56,7 +55,9 @@ const TravellersForm = ({ navigation }) => {
                 <Input
                   placeholder="Passport Number"
                   onChangeText={(passport) => {
-                    passengers[parseInt(traveller) - 1]["passport"] = passport;
+                    passengers[parseInt(traveller) - 1]["passport"] = parseInt(
+                      passport
+                    );
                     setPassengers(passengers);
                     console.log("testing passengers", passengers);
                   }}

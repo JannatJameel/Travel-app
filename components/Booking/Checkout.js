@@ -3,77 +3,65 @@ import { useSelector, useDispatch } from "react-redux";
 import { checkout } from "../../store/actions/bookingActions";
 import CheckoutCard from "./CheckoutCard";
 //Styling
-import {
-  Container,
-  Content,
-  Text,
-  Card,
-  CardItem,
-  Right,
-  Left,
-} from "native-base";
+import { Container, Text, Button } from "native-base";
 
-import { AuthButton, AuthButtonText } from "./styles";
 import { Alert } from "react-native";
 
 const Checkout = ({ flight, navigation }) => {
   const dispatch = useDispatch();
   const flightClass = useSelector((state) => state.flightReducer.flightClass);
   const passengers = useSelector((state) => state.flightReducer.passengers);
-
+  const passengerInfo = useSelector((state) => state.bookingReducer.passengers);
   const bookings = useSelector((state) => state.bookingReducer.bookings);
+  const token = useSelector((state) => state.authReducer.user);
 
-  console.log("FLIGHT!!!!!!!!", flight);
-  // console.log("PAssenger", passengers);
-  // console.log(flight.priceBusiness);
-  // console.log(flight.priceEconomy);
+  let userId = null;
+  if (token !== null) userId = token.id;
 
+  const handleCheckout = () => {
+    let cart = [];
+    bookings.length === 2
+      ? (cart = {
+          user: userId,
+          flights: [
+            {
+              flightId: bookings[0].id,
+              flightClass: flightClass,
+              passengers: passengers,
+            },
+            {
+              flightId: bookings[1].id,
+              flightClass: flightClass,
+              passengers: passengers,
+            },
+          ],
+          passengers: passengerInfo,
+        })
+      : (cart = {
+          user: userId,
+          flights: [
+            {
+              flightId: bookings[0].id,
+              flightClass: flightClass,
+              passengers: passengers,
+            },
+          ],
+          passengers: passengerInfo,
+        });
+    dispatch(checkout(cart));
+    navigation.replace("Home");
+    Alert.alert("Thank you for booking with us!");
+  };
   return (
     <Container>
       {bookings.map((flight) => (
         <CheckoutCard flight={flight} key={flight.id} navigation={navigation} />
       ))}
+      <Button onPress={handleCheckout}>
+        <Text>hiii</Text>
+      </Button>
     </Container>
   );
 };
 
 export default Checkout;
-
-// <Content>
-
-// <Text>Trip Summary</Text>
-// {/* <Text>
-//   {flightClass === "economy"
-//     ? flight.priceEconomy
-//     : flight.priceBusiness}
-// </Text> */}
-// {/* Total */}
-// <Card>
-//   <CardItem>
-//     <Left>
-//       <Text>
-//         Traveller 1 {"\n"}
-//         BAH - KSA{"\n"}
-//         KSA - BAH
-//       </Text>
-//     </Left>
-//     <Right>
-//       <Text>
-//         {/* {"\n"}
-//         {flightClass === "economy"
-//           ? flight.priceEconomy
-//           : flight.priceBusiness}
-//         {"\n"}
-//         {flightClass === "economy"
-//           ? flight.priceEconomy
-//           : flight.priceBusiness} */}
-//       </Text>
-//     </Right>
-//   </CardItem>
-// </Card>
-// <AuthButton
-//   onPress={() => Alert.alert("Thank you for booking with us!")}
-// >
-//   <AuthButtonText>Checkout</AuthButtonText>
-// </AuthButton>
-// </Content>

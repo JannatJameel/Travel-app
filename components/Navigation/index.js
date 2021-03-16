@@ -19,13 +19,13 @@ const RootNavigator = () => {
     <NavigationContainer initialRouteName="Home">
       <Navigator>
         <Screen name="Home" component={Home} options={{ headerShown: false }} />
-        <Screen name="Checkout" component={Checkout} />
-        <Screen name="TravellersForm" component={TravellersForm} />
-        <Screen name="FlightReview" component={FlightReview} />
+        <Screen name="Signin" component={Signin} />
         <Screen name="FlightSearch" component={FlightSearch} />
+        <Screen name="TravellersForm" component={TravellersForm} />
+        <Screen name="Checkout" component={Checkout} />
+        <Screen name="FlightReview" component={FlightReview} />
         <Screen name="ReturnFlights" component={ReturnFlights} />
         <Screen name="DepartureFlights" component={DepartureFlights} />
-        <Screen name="Signin" component={Signin} />
         <Screen name="Signup" component={Signup} />
       </Navigator>
     </NavigationContainer>

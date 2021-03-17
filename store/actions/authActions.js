@@ -66,6 +66,34 @@ export const fetchProfile = () => {
   };
 };
 
+export const updateProfile = (updatedProfile) => {
+  return async (dispatch) => {
+    try {
+      const res = await instance.put("/update", updatedProfile);
+      dispatch({
+        type: types.UPDATE_PROFILE,
+        payload: res.data,
+      });
+    } catch (error) {
+      console.log("error111:", error);
+    }
+  };
+};
+
+export const userHistory = () => {
+  return async (dispatch) => {
+    try {
+      const res = await instance.get("/history");
+      dispatch({
+        type: types.FETCH_HISTORY,
+        payload: res.data,
+      });
+    } catch (error) {
+      console.log("error:", error);
+    }
+  };
+};
+
 export const checkForToken = () => async (dispatch) => {
   const token = await AsyncStorage.getItem("myToken");
   if (token) {

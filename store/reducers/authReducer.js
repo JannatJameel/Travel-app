@@ -3,6 +3,7 @@ import * as types from "../actions/types";
 const initialState = {
   user: null,
   profile: {},
+  history: [],
 };
 
 const authReducer = (state = initialState, action) => {
@@ -16,6 +17,16 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         profile: action.payload,
+      };
+    case types.UPDATE_PROFILE:
+      return {
+        ...state,
+        profile: action.payload,
+      };
+    case types.FETCH_HISTORY:
+      return {
+        ...state,
+        history: action.payload,
       };
     default:
       return state;

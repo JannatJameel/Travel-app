@@ -22,10 +22,11 @@ const Signin = ({ navigation }) => {
   });
 
   const handleSubmit = () => {
-    dispatch(signin(user, navigation));
+    dispatch(signin(user));
     bookings.length > 0
       ? navigation.replace("TravellersForm")
       : navigation.replace("Home");
+    console.log("user from signin", user);
   };
 
   return (

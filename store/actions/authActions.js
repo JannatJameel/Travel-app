@@ -1,6 +1,8 @@
 import decode from "jwt-decode";
 import instance from "./instance";
 import * as types from "./types";
+
+// Async Storage
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const setUser = (token) => {

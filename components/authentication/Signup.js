@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+
+// Store
 import { signup } from "../../store/actions/authActions";
 
 // Styling

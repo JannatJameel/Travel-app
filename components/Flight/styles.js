@@ -1,5 +1,5 @@
 import styled from "styled-components/native";
-import { Container, Header, Content, Form, Item, Picker } from "native-base";
+import { Picker } from "native-base";
 
 export const AuthContainer = styled.View`
   flex: 1;

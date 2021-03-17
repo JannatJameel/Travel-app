@@ -1,5 +1,4 @@
 import styled from "styled-components/native";
-import { Container, Header, Content, Form, Item, Picker } from "native-base";
 
 export const AuthButton = styled.TouchableOpacity`
   align-self: stretch;

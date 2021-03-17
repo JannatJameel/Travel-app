@@ -1,13 +1,17 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+
+// Store
 import { checkout } from "../../store/actions/bookingActions";
+
+// Components
 import CheckoutCard from "./CheckoutCard";
+
 //Styling
 import { Container, Text, Button } from "native-base";
-
 import { Alert } from "react-native";
 
-const Checkout = ({ flight, navigation }) => {
+const Checkout = ({ navigation }) => {
   const dispatch = useDispatch();
   const flightClass = useSelector((state) => state.flightReducer.flightClass);
   const passengers = useSelector((state) => state.flightReducer.passengers);

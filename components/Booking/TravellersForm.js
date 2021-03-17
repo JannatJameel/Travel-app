@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
+// Store
+import { setPassengersInfo } from "../../store/actions/bookingActions";
+
 // Styling
 import { Container, Title, Content, Form, Item, Input } from "native-base";
 import { AuthButton, AuthButtonText } from "./styles";
-import { setPassengersInfo } from "../../store/actions/bookingActions";
 
 const TravellersForm = ({ navigation }) => {
   const dispatch = useDispatch();

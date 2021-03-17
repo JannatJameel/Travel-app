@@ -1,24 +1,19 @@
-// import React in our code
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+
+// Store
 import { searchDepartures } from "../../store/actions/flightActions";
 import {
   searchReturns,
   setPassengers,
   setClass,
 } from "../../store/actions/flightActions";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-
-//import DatePicker from the package we installed
-import DatePicker from "react-native-datepicker";
 
 // Styling
 import { AuthButton, AuthButtonText, AuthContainer, AuthOther } from "./styles";
 import { Header, Form, Item, Picker, Content } from "native-base";
-
-// import all the components we are going to use
+import DatePicker from "react-native-datepicker";
 import { Button, SafeAreaView, StyleSheet, Text, View } from "react-native";
-
 import NumericInput from "react-native-numeric-input";
 
 const FlightSearch = ({ navigation }) => {
@@ -44,8 +39,6 @@ const FlightSearch = ({ navigation }) => {
         }
   );
 
-  // console.log(roundtrip);
-
   const allAirports = useSelector((state) => state.flightReducer.airports);
   const departureAirports = allAirports.map((airport) => airport.location);
   const arrivalAirports = departureAirports.filter(
@@ -66,7 +59,6 @@ const FlightSearch = ({ navigation }) => {
 
   return (
     <AuthContainer>
-      {/* <AuthTitle>Search for a flight</AuthTitle> */}
       <Header />
       <Content>
         <Form>

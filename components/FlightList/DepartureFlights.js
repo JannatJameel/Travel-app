@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import FlightCard from "./FlightCard";
 import { useSelector } from "react-redux";
 
-//styling
+// Styling
 import { Container } from "native-base";
 import { Text } from "react-native";
 
@@ -11,10 +11,6 @@ const DepartureFlights = ({ navigation }) => {
     (state) => state.flightReducer.departureFlights
   );
 
-  // if (departureFlights.length === 0) {
-  //   Alert.alert("No flights found try another search.");
-  //   // navigation.replace("Home");
-  // }
   return (
     <Container>
       <Text>Departure Flights</Text>

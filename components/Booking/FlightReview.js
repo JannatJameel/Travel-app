@@ -1,11 +1,12 @@
+import React from "react";
 import { useSelector } from "react-redux";
-import { checkout } from "../../store/actions/bookingActions";
+
+// Components
 import ReviewCard from "./ReviewCard";
+
 //Styling
 import { Container } from "native-base";
-import { AuthButton, AuthButtonText } from "./styles";
-import React, { useState } from "react";
-import { View, StyleSheet, Button, Alert } from "react-native";
+import { Button, Alert } from "react-native";
 
 const FlightReview = ({ navigation }) => {
   const bookings = useSelector((state) => state.bookingReducer.bookings);

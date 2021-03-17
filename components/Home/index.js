@@ -1,4 +1,10 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+// Store
+import { signout } from "../../store/actions/authActions";
+
+// Styling
 import {
   BottomStyling,
   ButtonStyled,
@@ -6,8 +12,6 @@ import {
   Title,
   TopStyling,
 } from "./styles";
-import { useDispatch, useSelector } from "react-redux";
-import { signout } from "../../store/actions/authActions";
 
 const Home = ({ navigation }) => {
   const dispatch = useDispatch();

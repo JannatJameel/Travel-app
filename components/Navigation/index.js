@@ -1,4 +1,6 @@
 import React from "react";
+
+// Navigation Setup
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 
@@ -16,6 +18,7 @@ import Home from "../Home";
 const RootNavigator = () => {
   const { Navigator, Screen } = createStackNavigator();
   return (
+    // Will need to clean the screens
     <NavigationContainer initialRouteName="Home">
       <Navigator>
         <Screen name="Home" component={Home} options={{ headerShown: false }} />

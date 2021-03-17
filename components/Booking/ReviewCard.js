@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 //Styling
 import { Card, CardItem, Text, Right, Left } from "native-base";
 
-const ReviewCard = ({ flight, navigation }) => {
+const ReviewCard = ({ flight }) => {
   const flightClass = useSelector((state) => state.flightReducer.flightClass);
 
   return (

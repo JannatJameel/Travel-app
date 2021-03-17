@@ -1,9 +1,11 @@
 import React from "react";
-import FlightCard from "./FlightCard";
 import { useSelector } from "react-redux";
 
-import { Body, Container, Title } from "native-base";
-import { View, Text } from "react-native";
+// Components
+import FlightCard from "./FlightCard";
+
+// Styling
+import { Container, Title } from "native-base";
 
 const ReturnFlights = ({ navigation }) => {
   const returnFlights = useSelector(

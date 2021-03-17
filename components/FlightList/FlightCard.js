@@ -1,8 +1,10 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+
+// Store
 import { addFlight } from "../../store/actions/bookingActions";
 
-//Styling
+// Styling
 import { Card, CardItem, Body, Text, Right, Left } from "native-base";
 import { Button } from "react-native";
 
@@ -31,6 +33,7 @@ const FlightCard = ({ flight, navigation, isReturnFlight }) => {
           </Text>
         </Left>
         <Body>
+          {/* Will need to make the card clickable */}
           <Button onPress={handleAddFlight} title="CLICKKK" />
         </Body>
         <Right>

@@ -12,7 +12,7 @@ export const CHECKOUT = "CHECKOUT";
 // Auth Types
 export const SET_USER = "SET_USER";
 export const UPDATE_USER = "UPDATE_USER";
-
+export const FETCH_PROFILE = "FETCH_PROFILE";
 export const SET_PASSENGER = "SET_PASSENGER";
 
 export const SET_CLASS = "SET_CLASS";

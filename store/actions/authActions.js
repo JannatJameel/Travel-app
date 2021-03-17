@@ -23,7 +23,6 @@ export const signin = (userData, navigation) => {
     try {
       const res = await instance.post("/signin", userData);
       dispatch(setUser(res.data.token));
-      navigation.goBack();
       console.log("Success!");
     } catch (error) {
       console.log(error);
@@ -50,6 +49,20 @@ export const signout = () => {
   return {
     type: types.SET_USER,
     payload: null,
+  };
+};
+
+export const fetchProfile = () => {
+  return async (dispatch) => {
+    try {
+      const res = await instance.get("/profile");
+      dispatch({
+        type: types.FETCH_PROFILE,
+        payload: res.data,
+      });
+    } catch (error) {
+      console.error(error);
+    }
   };
 };
 

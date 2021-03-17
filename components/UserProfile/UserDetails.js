@@ -13,9 +13,8 @@ import {
 } from "native-base";
 import { EditButton, EditButtonText } from "./styles";
 
-const UserDetails = () => {
-  const profile = useSelector((state) => state.userReducer.profile);
-  console.log(profile);
+const UserDetails = ({ navigation }) => {
+  const profile = useSelector((state) => state.authReducer.profile);
 
   return (
     <Container>
@@ -24,24 +23,27 @@ const UserDetails = () => {
         <Form>
           <Item stackedLabel>
             <Label>First Name</Label>
-            <Input value="Hajar" disabled />
+            <Input value={profile.firstName} disabled />
           </Item>
           <Item stackedLabel>
             <Label>Last Name</Label>
-            <Input value="AlGhannami" disabled />
+            <Input value={profile.lastName} disabled />
           </Item>
           <Item stackedLabel>
             <Label>User Name</Label>
-            <Input value="hajar1" disabled />
+            <Input value={profile.username} disabled />
           </Item>
           <Item stackedLabel>
             <Label>Email</Label>
-            <Input value="hajar@gmail.com" disabled />
+            <Input value={profile.email} disabled />
           </Item>
         </Form>
       </Content>
-      <EditButton>
+      <EditButton onPress={() => navigation.navigate("UserForm")}>
         <EditButtonText>Edit Profile</EditButtonText>
+      </EditButton>
+      <EditButton onPress={() => navigation.navigate("FlightHistory")}>
+        <EditButtonText>FlightHistory</EditButtonText>
       </EditButton>
     </Container>
   );

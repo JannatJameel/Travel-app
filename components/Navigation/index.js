@@ -15,6 +15,8 @@ import Checkout from "../Booking/Checkout";
 import Home from "../Home";
 import ProfileButton from "../buttons/profileButton";
 import UserDetails from "../UserProfile/UserDetails";
+import UserForm from "../UserProfile/UserForm";
+import FlightHistory from "../UserProfile/FlightHistory";
 
 const RootNavigator = () => {
   const { Navigator, Screen } = createStackNavigator();
@@ -29,7 +31,9 @@ const RootNavigator = () => {
             headerRight: () => <ProfileButton navigation={navigation} />,
           })}
         />
+        <Screen name="FlightHistory" component={FlightHistory} />
         <Screen name="UserDetails" component={UserDetails} />
+        <Screen name="UserForm" component={UserForm} />
         <Screen name="Signin" component={Signin} />
         <Screen name="FlightSearch" component={FlightSearch} />
         <Screen name="TravellersForm" component={TravellersForm} />

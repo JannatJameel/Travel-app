@@ -21,6 +21,7 @@ const UserForm = ({ navigation }) => {
 
   const handleSubmit = () => {
     dispatch(updateProfile(userProfile, navigation));
+    navigation.goBack();
   };
 
   return (

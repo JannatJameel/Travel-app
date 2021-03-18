@@ -20,32 +20,17 @@ import { Header, Form, Item, Picker, Content } from "native-base";
 import { Button, SafeAreaView, StyleSheet, Text, View } from "react-native";
 
 import NumericInput from "react-native-numeric-input";
+import { round } from "react-native-reanimated";
 
-const FlightSearch = ({ navigation }) => {
+const FilterSearch = ({ navigation }) => {
   const [roundtrip, setRoundtrip] = useState(false);
   const dispatch = useDispatch();
 
-  const [flight, setFlight] = useState(
-    roundtrip
-      ? {
-          departureAirport: "",
-          arrivalAirport: "",
-          departureDate: "",
-          returnDate: "",
-          passengers: "",
-          flightClass: "",
-        }
-      : {
-          departureAirport: "",
-          arrivalAirport: "",
-          departureDate: "",
-          passengers: "",
-          flightClass: "",
-        }
-  );
+  const search = useSelector((state) => state.flightReducer.search);
 
-  // console.log(roundtrip);
+  const [flight, setFlight] = useState(search);
 
+  console.log("------helllooo-----", search);
   const allAirports = useSelector((state) => state.flightReducer.airports);
   const departureAirports = allAirports.map((airport) => airport.location);
   const arrivalAirports = departureAirports.filter(
@@ -54,13 +39,12 @@ const FlightSearch = ({ navigation }) => {
 
   const handleSubmit = async () => {
     dispatch(setSearch(flight));
-    console.log("---------i am not empty-----", flight);
     dispatch(searchDepartures(flight, navigation));
     dispatch(setClass());
     dispatch(setPassengers());
     if (roundtrip) dispatch(searchReturns(flight));
     try {
-      navigation.push("DepartureFlights");
+      navigation.navigate("DepartureFlights");
     } catch (error) {
       console.log(error);
     }
@@ -216,7 +200,7 @@ const FlightSearch = ({ navigation }) => {
   );
 };
 
-export default FlightSearch;
+export default FilterSearch;
 
 const styles = StyleSheet.create({
   container: {

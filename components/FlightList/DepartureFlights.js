@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import FlightCard from "./FlightCard";
 import { useSelector } from "react-redux";
+import { AuthButton, AuthButtonText } from "./styles";
 
 //styling
 import { Container } from "native-base";
 import { Text } from "react-native";
+import Filtering from "./Filtering";
 
 const DepartureFlights = ({ navigation }) => {
   const departureFlights = useSelector(
@@ -18,6 +20,7 @@ const DepartureFlights = ({ navigation }) => {
   return (
     <Container>
       <Text>Departure Flights</Text>
+      {/* <Filtering /> */}
       {departureFlights.map((flight) => (
         <FlightCard
           flight={flight}
@@ -26,6 +29,9 @@ const DepartureFlights = ({ navigation }) => {
           navigation={navigation}
         />
       ))}
+      <AuthButton onPress={() => navigation.navigate("FilterSearch")}>
+        <AuthButtonText>filter</AuthButtonText>
+      </AuthButton>
     </Container>
   );
 };

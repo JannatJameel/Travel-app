@@ -6,6 +6,7 @@ import CheckoutCard from "./CheckoutCard";
 import { Container, Text, Button } from "native-base";
 
 import { Alert } from "react-native";
+import { AuthButton, AuthButtonText } from "./styles";
 
 const Checkout = ({ flight, navigation }) => {
   const dispatch = useDispatch();
@@ -57,9 +58,10 @@ const Checkout = ({ flight, navigation }) => {
       {bookings.map((flight) => (
         <CheckoutCard flight={flight} key={flight.id} navigation={navigation} />
       ))}
-      <Button onPress={handleCheckout}>
-        <Text>hiii</Text>
-      </Button>
+
+      <AuthButton onPress={handleCheckout}>
+        <AuthButtonText>Checkout</AuthButtonText>
+      </AuthButton>
     </Container>
   );
 };

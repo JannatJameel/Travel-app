@@ -1,6 +1,7 @@
 import React from "react";
 import FlightCard from "./FlightCard";
 import { useSelector } from "react-redux";
+import { AuthButton, AuthButtonText } from "./styles";
 
 import { Body, Container, Title } from "native-base";
 import { View, Text } from "react-native";
@@ -41,6 +42,9 @@ const ReturnFlights = ({ navigation }) => {
           navigation={navigation}
         />
       ))}
+      <AuthButton onPress={() => navigation.navigate("FilterSearch")}>
+        <AuthButtonText>filter</AuthButtonText>
+      </AuthButton>
     </Container>
   );
 };

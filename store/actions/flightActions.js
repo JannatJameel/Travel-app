@@ -3,6 +3,14 @@ import { Alert } from "react-native";
 import instance from "./instance";
 import * as types from "./types";
 
+export const setSearch = (flight) => {
+  flight.passengers = flight.passengers.toString();
+  return {
+    type: types.SET_SEARCH,
+    payload: flight,
+  };
+};
+
 export const searchDepartures = (flight, navigation) => {
   return async (dispatch) => {
     try {

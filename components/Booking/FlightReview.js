@@ -8,9 +8,10 @@ import React, { useState } from "react";
 import { View, StyleSheet, Button, Alert } from "react-native";
 
 const FlightReview = ({ navigation }) => {
+  const user = useSelector((state) => state.authReducer.user);
   const bookings = useSelector((state) => state.bookingReducer.bookings);
   const alertfunction = () =>
-    Alert.alert("Alert Title", "My Alert Msg", [
+    Alert.alert("Book a flight", "", [
       {
         text: "Guest",
         onPress: () => navigation.navigate("TravellersForm"),
@@ -22,7 +23,14 @@ const FlightReview = ({ navigation }) => {
       {bookings.map((flight) => (
         <ReviewCard flight={flight} key={flight.id} navigation={navigation} />
       ))}
-      <Button title={"2-Button Alert"} onPress={alertfunction} />
+      {user ? (
+        <Button
+          title={"Book a flight"}
+          onPress={() => navigation.navigate("TravellersForm")}
+        />
+      ) : (
+        <Button title={"Book a flight"} onPress={alertfunction} />
+      )}
     </Container>
   );
 };

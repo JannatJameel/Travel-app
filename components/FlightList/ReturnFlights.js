@@ -12,7 +12,8 @@ const ReturnFlights = ({ navigation }) => {
   );
   const bookings = useSelector((state) => state.bookingReducer.bookings);
 
-  if (returnFlights.length === 0) navigation.replace("FlightReview");
+  // if (returnFlights.length === 0) navigation.replace("FlightReview");
+
   const minTime =
     new Date(
       [bookings[0].arrivalDate, bookings[0].arrivalTime].join("T")
@@ -32,20 +33,21 @@ const ReturnFlights = ({ navigation }) => {
   console.log("AVAILABLE", availableFlights);
 
   return (
-    <Container>
-      <Title>Return Flight</Title>
-      {availableFlights.map((flight) => (
-        <FlightCard
-          flight={flight}
-          key={flight.id}
-          isReturnFlight={true}
-          navigation={navigation}
-        />
-      ))}
+    <>
+      <Container>
+        {availableFlights.map((flight) => (
+          <FlightCard
+            flight={flight}
+            key={flight.id}
+            isReturnFlight={true}
+            navigation={navigation}
+          />
+        ))}
+      </Container>
       <AuthButton onPress={() => navigation.navigate("FilterSearch")}>
         <AuthButtonText>filter</AuthButtonText>
       </AuthButton>
-    </Container>
+    </>
   );
 };
 

@@ -15,7 +15,7 @@ const Home = ({ navigation }) => {
   return (
     <HomeBackground style={{ flex: 1, width: "100%", height: "100%" }}>
       <TopStyling>
-        <Title>Welcome</Title>
+        <Title>Welcome Traveller</Title>
       </TopStyling>
       <BottomStyling>
         <ButtonStyled onPress={() => navigation.navigate("FlightSearch")}>

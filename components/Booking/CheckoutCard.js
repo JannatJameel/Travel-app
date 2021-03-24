@@ -15,16 +15,17 @@ import {
 
 const ReviewCard = ({ flight, navigation }) => {
   const flightClass = useSelector((state) => state.flightReducer.flightClass);
-
+  const passengers = useSelector((state) => state.flightReducer.passengers);
+  console.log("------", flight);
   return (
     <CardItem>
       <Left>
-        <Text>Traveller</Text>
-      </Left>
-      <Body>
         <Text>
           {flight.departureAirport.location} - {flight.arrivalAirport.location}{" "}
         </Text>
+      </Left>
+      <Body>
+        <Text>{flight.departureDate}</Text>
       </Body>
       <Right>
         <Text>
@@ -32,7 +33,6 @@ const ReviewCard = ({ flight, navigation }) => {
           {flightClass === "economy"
             ? flight.priceEconomy
             : flight.priceBusiness}
-          {"\n"}
         </Text>
       </Right>
     </CardItem>

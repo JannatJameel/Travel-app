@@ -4,8 +4,8 @@ export const EditButton = styled.TouchableOpacity`
   align-self: stretch;
   align-items: center;
   padding: 20px;
-  background-color: #6cb6c4;
-  margin-top: 30px;
+  background-color: #4054b2;
+  margin-top: 10px;
 `;
 
 export const EditButtonText = styled.Text`

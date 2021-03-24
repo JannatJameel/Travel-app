@@ -1,11 +1,10 @@
+import React from "react";
 import { useSelector } from "react-redux";
-import { checkout } from "../../store/actions/bookingActions";
 import ReviewCard from "./ReviewCard";
 //Styling
-import { Container } from "native-base";
+import { Container, Content } from "native-base";
+import { Button, Alert } from "react-native";
 import { AuthButton, AuthButtonText } from "./styles";
-import React, { useState } from "react";
-import { View, StyleSheet, Button, Alert } from "react-native";
 
 const FlightReview = ({ navigation }) => {
   const user = useSelector((state) => state.authReducer.user);
@@ -20,16 +19,19 @@ const FlightReview = ({ navigation }) => {
     ]);
   return (
     <Container>
-      {bookings.map((flight) => (
-        <ReviewCard flight={flight} key={flight.id} navigation={navigation} />
-      ))}
+      <Content>
+        {bookings.map((flight) => (
+          <ReviewCard flight={flight} key={flight.id} navigation={navigation} />
+        ))}
+      </Content>
       {user ? (
-        <Button
-          title={"Book a flight"}
-          onPress={() => navigation.navigate("TravellersForm")}
-        />
+        <AuthButton onPress={() => navigation.navigate("TravellersForm")}>
+          <AuthButtonText>Book a flight</AuthButtonText>
+        </AuthButton>
       ) : (
-        <Button title={"Book a flight"} onPress={alertfunction} />
+        <AuthButton onPress={alertfunction}>
+          <AuthButtonText>Book a flight</AuthButtonText>
+        </AuthButton>
       )}
     </Container>
   );

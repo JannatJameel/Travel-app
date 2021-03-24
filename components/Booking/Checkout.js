@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { checkout } from "../../store/actions/bookingActions";
 import CheckoutCard from "./CheckoutCard";
 //Styling
-import { Container, Text, Button } from "native-base";
+import { Container, Text, Button, Content } from "native-base";
 
 import { Alert } from "react-native";
 import { AuthButton, AuthButtonText } from "./styles";
@@ -54,15 +54,22 @@ const Checkout = ({ flight, navigation }) => {
     Alert.alert("Thank you for booking with us!");
   };
   return (
-    <Container>
-      {bookings.map((flight) => (
-        <CheckoutCard flight={flight} key={flight.id} navigation={navigation} />
-      ))}
-
-      <AuthButton onPress={handleCheckout}>
-        <AuthButtonText>Checkout</AuthButtonText>
-      </AuthButton>
-    </Container>
+    <>
+      <Container>
+        <Content>
+          {bookings.map((flight) => (
+            <CheckoutCard
+              flight={flight}
+              key={flight.id}
+              navigation={navigation}
+            />
+          ))}
+        </Content>
+        <AuthButton onPress={handleCheckout}>
+          <AuthButtonText>Checkout</AuthButtonText>
+        </AuthButton>
+      </Container>
+    </>
   );
 };
 

@@ -20,7 +20,6 @@ import { Header, Form, Item, Picker, Content } from "native-base";
 import { Button, SafeAreaView, StyleSheet, Text, View } from "react-native";
 
 import NumericInput from "react-native-numeric-input";
-import { round } from "react-native-reanimated";
 
 const FilterSearch = ({ navigation }) => {
   const [roundtrip, setRoundtrip] = useState(false);
@@ -58,8 +57,16 @@ const FilterSearch = ({ navigation }) => {
         <Form>
           {/* Buttons */}
           <View>
-            <Button title="Round Trip" onPress={() => setRoundtrip(true)} />
-            <Button title="One-way" onPress={() => setRoundtrip(false)} />
+            <Button
+              color="#4054b2"
+              title="Round Trip"
+              onPress={() => setRoundtrip(true)}
+            />
+            <Button
+              color="#4054b2"
+              title="One-way"
+              onPress={() => setRoundtrip(false)}
+            />
           </View>
 
           {/* Picker - Departure Airport  */}
